@@ -1,0 +1,115 @@
+<?php
+
+include_once('db.php');
+
+if(isset($_POST['submit']))
+
+    $eid=$_GET['Email'];
+
+$sql = "SELECT *from users where Status= '1'";
+$result = mysqli_query($conn, $sql);  
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        
+        
+        .demo{text-align:center;
+        font-size:100px;
+    margin:0px;
+}
+        </style>
+        
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title></title>
+</head>
+<body>
+    <table >
+    <div class="container">
+    <div class="card">
+    <h1>Brainworks</h1> <p class="text-right card-header">logged in as:<?php
+     ?></p></div>
+
+    <p id="demo"></p>
+ <script>
+document.getElementById('timer').innerHTML =
+  05 + ":" + 00;
+startTimer();
+
+
+function startTimer() {
+  var presentTime = document.getElementById('timer').innerHTML;
+  var timeArray = presentTime.split(/[:]+/);
+  var m = timeArray[0];
+  var s = checkSecond((timeArray[1] - 1));
+  if(s==59){m=m-1}
+  if(m<0){
+    return
+  }
+  
+  document.getElementById('timer').innerHTML =
+    m + ":" + s;
+  console.log(m)
+  setTimeout(startTimer, 1000);
+  
+}
+
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+  if (sec < 0) {sec = "59"};
+  return sec;
+}
+</script>
+<form action="next1.php">
+<div class="text-align:left">
+<div class="text-right">
+<a href="signout.php" class="btn btn-primary">sign out</a>
+</div>
+
+    <h3>Q1.</h3>
+    <br>
+    <img src="images/trafficlight.jpeg" alt="trafficlight">
+    <br>
+<h4>What should you do when you see this traffic signal?
+</h4>
+</div>
+<br>
+
+<input type="radio" name="ans" value="Stop" required=""><label>Stop</label>
+<br>
+<input type="radio" name="ans" value="Go" required=""><label>Go</label>
+    
+<ul class="pager">
+<center><a href="index.php" class="btn btn-primary"><<</a>
+
+<a href="next1.php"  class="btn btn-primary">>></a>
+</center>
+    </ul>
+
+</div>
+
+    </from>
+
+</table>
+
+
+</body>
+</html>
